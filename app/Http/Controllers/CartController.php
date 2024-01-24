@@ -30,10 +30,12 @@ class CartController extends Controller
 
     public function delete(){
         $cart = session('cart');
-        $cart->forget(request()->id); // delete object pertama yg di dapet
+        $first = $cart->firstWhere('id', request()->id);
+        $cart->forget($cart->search($first));
         session(['cart' => $cart]);
-        return redirect()->back();
+        return redirect()->intended('cart');
     }
+
 
     public function checkout(){
         $cart = session('cart');
