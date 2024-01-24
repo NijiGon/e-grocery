@@ -16,7 +16,7 @@
                 <tr>
                 <th scope="row"></th>
                 <td>{{ $item->name }}</td>
-                <td>{{ $item->desc }}</td>
+                <td class="text-truncate" style="max-width: 500px;">{{ $item->desc }}</td>
                 <td>{{ 'Rp. ' . $item->price . ',-' }}</td>
                 <td>
                     <a href="{{ route('item.show', ['id' => $item->id]) }}" class="btn btn-success ">Details</a>

@@ -30,16 +30,7 @@ class CartController extends Controller
 
     public function delete(){
         $cart = session('cart');
-        $first = $cart->first(function ($c) {
-            return $c->id == request()->id;
-        });
-
-        // Remove the first matching item
-        if ($first) {
-            $cart = $cart->reject(function ($c) use ($first) {
-                return $c === $first;
-            });
-        }
+        $cart->forget(request()->id);  // Directly remove the item using its ID
         session(['cart' => $cart]);
         return redirect()->back();
     }

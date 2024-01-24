@@ -20,23 +20,25 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Display Picture</label>
-                <input class="form-control" name="file" type="file" id="formFile">
+                <input class="form-control" value="{{ $user->display_picture }}" name="file" type="file" id="formFile">
             </div>
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
                 <select class="form-select" id="gender" aria-label="Default select example" name="gender">
                     @foreach($genders as $gender)
-                    <option value="{{ $gender->id }}">{{ $gender->desc }}</option>
+                    <option @if ($gender->id === $user->gender_id)
+                        selected
+                    @endif value="{{ $gender->id }}">{{ $gender->desc }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" value="{{ $user->first_name }}" class="form-control" name="password" id="exampleInputPassword1">
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <input type="password" value="{{ $user->first_name }}" class="form-control" name="password_confirmation" id="exampleInputPassword1">
+                <input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
