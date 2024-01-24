@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div>
-        @if($items !== null)
+        @if($items->count() > 0)
         <table class="table">
             <thead>
                 <tr>
@@ -27,7 +27,7 @@
             </tbody>
         </table>
         <div>
-            <h2>Total: {{ $total }}</h2>
+            <h2>Total: {{ 'Rp. ' . $total . ',-'}}</h2>
             <form action="{{ route('checkout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-success">Checkout</button>

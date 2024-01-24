@@ -31,7 +31,9 @@ class CartController extends Controller
     public function delete(){
         $cart = session('cart');
         $first = $cart->firstWhere('id', request()->id);
-        $cart->forget($cart->search($first));
+        if($first){
+            $cart->forget($cart->search($first));
+        }
         session(['cart' => $cart]);
         return redirect()->intended('cart');
     }
