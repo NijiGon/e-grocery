@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         DB::table('genders')->insert([
             'desc' => 'Female',
         ]);
-        for ($i=0; $i < 20; $i++) {
+        for ($i=0; $i < 100; $i++) {
             DB::table('items')->insert([
                 'name' => fake()->name,
                 'desc' => fake()->text(500),

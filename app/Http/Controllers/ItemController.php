@@ -9,7 +9,7 @@ class ItemController extends Controller
 {
     //
     public function index(){
-        $items = Item::all();
+        $items = Item::paginate(10);
         return view('home', compact('items'));
     }
     public function show($id){
