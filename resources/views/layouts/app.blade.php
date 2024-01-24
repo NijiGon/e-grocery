@@ -44,15 +44,17 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('view.register') }}">Register</a>
                     </li>
-                    @endguest
-                    @auth
+                    @else
+                    <li class="nav-item">
+                    <a class="btn btn-primary " aria-current="page" href="{{ route('profile', ['id' => auth()->user()->id]) }}">{{ auth()->user()->email . ' | ' . auth()->user()->role->name }}</a>
+                    </li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="nav-link active" aria-current="page" href="#">Logout</button>
                         </form>
                     </li>
-                    @endauth
+                    @endguest
                 </ul>
                 </div>
             </div>
