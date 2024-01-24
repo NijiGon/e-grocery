@@ -28,7 +28,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
     public function maintenance(){
-        $users = User::all();
+        $users = User::all()->where('id','!=',auth()->user()->id);
         return view('maintenance', compact('users'));
     }
 }

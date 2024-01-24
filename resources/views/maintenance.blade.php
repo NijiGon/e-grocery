@@ -17,7 +17,8 @@
                 <td>
                     <div class="d-flex gap-3">
                         <a class="btn btn-warning" href="{{ route('view.update', ['id' => $user->id]) }}">Update Role</a>
-                        <form action="{{ route('delete', ['id' => $user->id]) }}">
+                        <form action="{{ route('delete', ['id' => $user->id]) }}" method="POST">
+                            @csrf
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </div>

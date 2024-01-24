@@ -18,7 +18,7 @@
                 <th scope="row"></th>
                 <td>{{ $item->name }}</td>
                 <td class="text-truncate" style="max-width: 500px;">{{ $item->desc }}</td>
-                <td>{{ $item->price }}</td>
+                <td>{{ 'Rp. ' . $item->price . ',-' }}</td>
                 <td>
                     <a href="{{ route('cart.delete', ['id' => $item->id]) }}" class="btn btn-success ">Delete</a>
                 </td>
