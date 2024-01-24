@@ -27,4 +27,8 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->back();
     }
+    public function maintenance(){
+        $users = User::all();
+        return view('maintenance', compact('users'));
+    }
 }

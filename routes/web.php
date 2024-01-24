@@ -26,7 +26,7 @@ Route::redirect('/', '/home');
 Route::get('/home', [ItemController::class, 'index'])->name('home');
 Route::view('/success', 'success')->name('success')->middleware('auth');
 Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
-Route::view('/maintenance', 'maintenance', ['users' => User::all()])->name('maintenance')->middleware('admin');
+Route::get('/maintenance', [AdminController::class, 'maintenance'])->name('maintenance')->middleware('admin');
 Route::get('/profile/{id}', [UserController::class, 'update'])->name('profile')->middleware('auth');
 Route::post('/profile', [UserController::class, 'change'])->name('profile.update')->middleware('auth');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('view.register');
