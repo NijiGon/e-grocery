@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\UserController;
 use App\Models\Item;
 use App\Models\User;
@@ -41,3 +42,4 @@ Route::get('/cart/add', [CartController::class, 'add'])->name('cart.add')->middl
 Route::get('/cart/delete', [CartController::class, 'delete'])->name('cart.delete')->middleware('auth');
 Route::get('item/{id}', [ItemController::class, 'show'])->name('item.show');
 Route::post('checkout', [CartController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::get('/lang', [LangController::class, 'setLang'])->name('lang');

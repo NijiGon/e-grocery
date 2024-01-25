@@ -20,29 +20,37 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @auth
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ __('app.layout.home') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('cart') }}">Cart</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('cart') }}">{{ __('app.layout.cart') }}</a>
                     </li>
                     @if(auth()->user()->role->name === 'Admin')
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('maintenance') }}">Account Maintenance</a>
-                    </li>
-                    @else
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('profile') }}">Profile</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('maintenance') }}">{{ __('app.layout.maintenance') }}</a>
                     </li>
                     @endif
                     @endauth
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ __('app.layout.lang') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('lang', ['lang' => 'en']) }}">EN</a></li>
+                        <li><a class="dropdown-item" href="{{ route('lang', ['lang' => 'id']) }}">ID</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link disabled">{{ __('app.lang') }}</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @guest
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('view.login') }}">Login</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('view.login') }}">{{ __('app.layout.login') }}</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('view.register') }}">Register</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('view.register') }}">{{ __('app.layout.register') }}</a>
                     </li>
                     @else
                     <li class="nav-item">
@@ -51,7 +59,7 @@
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="nav-link active" aria-current="page" href="#">Logout</button>
+                            <button class="nav-link active" aria-current="page" href="#">{{ __('app.layout.logout') }}</button>
                         </form>
                     </li>
                     @endguest

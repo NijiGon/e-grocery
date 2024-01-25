@@ -36,7 +36,6 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed',
             'file' => 'required|mimes:png,jpg,jpeg|max:2048',
         ]);
-        // dd($request->role);
         $user = User::create([
             'first_name' => $request->first,
             'last_name' => $request->last,
