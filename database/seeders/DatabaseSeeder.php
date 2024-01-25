@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $faker = fake('id_ID');
+
         DB::table('roles')->insert([
             'name' => 'Admin',
         ]);
@@ -34,9 +36,9 @@ class DatabaseSeeder extends Seeder
         ]);
         for ($i=0; $i < 100; $i++) {
             DB::table('items')->insert([
-                'name' => fake()->name,
-                'desc' => fake()->text(500),
-                'price' => fake()->numberBetween(1000, 1000000),
+                'name' => $faker->name,
+                'desc' => $faker->text(500),
+                'price' => $faker->numberBetween(1000, 1000000),
             ]);
         }
         DB::table('users')->insert([
