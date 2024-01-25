@@ -3,8 +3,8 @@
     <div>
         <form method="POST" action="{{ route('profile.update', ['id' => $user->id]) }}" enctype="multipart/form-data">
             @csrf
-            <div>
-                <img src="{{ asset('storage/images/' . $user->display_picture) }}" alt="Display Picture">
+            <div class="w-100">
+                <img class="mx-auto" src="{{ asset('storage/images/' . $user->display_picture) }}" alt="Display Picture">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">{{ __('app.form.first') }}</label>
