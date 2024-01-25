@@ -6,6 +6,7 @@ use App\Models\Gender;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -34,8 +35,11 @@ class AuthController extends Controller
             'last' => 'required|string|max:25',
             'email' => 'required|email',
             'password' => 'required|min:8|confirmed',
-            'file' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'file' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
+        $imgfile = request()->file('file');
+        $imgname = Str::uuid()->toString() . '.' . $imgfile->getClientOriginalExtension();
+        $imgpath = $imgfile->storeAs('public/images', $imgname);
         $user = User::create([
             'first_name' => $request->first,
             'last_name' => $request->last,
@@ -43,7 +47,7 @@ class AuthController extends Controller
             'role_id' => $request->role,
             'gender_id' => $request->gender,
             'password' => bcrypt($request->password),
-            'display_picture' => $request->file('file')->getClientOriginalName(),
+            'display_picture' => $imgname,
         ]);
         auth()->login($user);
         return redirect()->route('success');
